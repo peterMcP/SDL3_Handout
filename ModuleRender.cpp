@@ -42,6 +42,8 @@ update_status ModuleRender::PreUpdate()
 {
 	// TODO 7: Clear the screen to black before starting every frame
 
+
+
 	// TODO 10: Blit our test texture to check functionality
 
 	return update_status::UPDATE_CONTINUE;
