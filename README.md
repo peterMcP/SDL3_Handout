@@ -4,10 +4,10 @@
 
 2. Create your own Audio Module:
 
-   *. Use SDL_Mixer library
+   * Use SDL_Mixer library
 
-   *. Should be able to load music and effects
+   * Should be able to load music and effects
 
-   *. Should be able to play immediately any music of fx
+   * Should be able to play immediately any music of fx
 
-   *. Music should have some sort of slow fade out / in
+   * Music should have some sort of slow fade out / in
