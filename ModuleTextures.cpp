@@ -9,10 +9,10 @@
 
 ModuleTextures::ModuleTextures() : Module()
 {
-	// TODO 5: Initialize all texture pointers to nullptr
-	/*for (int i = 0; i < MAX_TEXTURES; ++i)
+	//TODO 5: Initialize all texture pointers to nullptr
+	/*for (int i = 0; i < MAX_TEXTURES; ++i) //
 	{
-		textures[i] = nullptr;
+		if (textures[i] != nullptr) textures[i] = nullptr;
 	}*/
 
 }
@@ -49,7 +49,7 @@ bool ModuleTextures::CleanUp()
 
 	for (int i = 0; i < MAX_TEXTURES; ++i)
 	{
-		SDL_DestroyTexture(textures[i]);
+		if(textures[i] != nullptr) SDL_DestroyTexture(textures[i]);
 	}
 
 	IMG_Quit();
@@ -66,6 +66,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	if (!image)
 	{
 		LOG("\n\nIMG_load error: %s\n", IMG_GetError());
+		return NULL;
 		update_status::UPDATE_STOP;
 	}
 
@@ -74,12 +75,12 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 	for (int i = 0; i <= MAX_TEXTURES; ++i)
 	{
-		if (textures[i] == NULL)
+		if (textures[i] == nullptr)
 		{
 			textures[i] = SDL_CreateTextureFromSurface(App->render->renderer, image);
-			if (textures[i] == NULL)
+			if (textures[i] == nullptr)
 			{
-				LOG("error creating texture");
+				LOG("error creating texture from surface: %s", SDL_GetError());
 				return nullptr;
 			}
 			SDL_FreeSurface(image);

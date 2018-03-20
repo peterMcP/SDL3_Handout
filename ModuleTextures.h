@@ -20,7 +20,7 @@ public:
 	SDL_Texture* const Load(const char* path);
 
 public:
-	SDL_Texture * textures[MAX_TEXTURES] = { nullptr }; //initialize all values to nullptr
+	SDL_Texture * textures[MAX_TEXTURES] = { nullptr }; //TODO 5: initialize all values to nullptr
 };
 
 #endif // __ModuleTextures_H__
