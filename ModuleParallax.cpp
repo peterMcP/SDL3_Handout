@@ -33,28 +33,31 @@ bool ModuleParallax::Init()
 	App->textures->Load("mg.png");
 	App->textures->Load("fg.png");
 	
-	bgWidth = new int;
-	offset = new int;
-	*offset = 291; //clip bg
+	//parallaxValues* p;
+
+	/*p.bgWidth = new int;
+	p.offset = new int;
+	*p.offset = 291; //clip bg*/
 
 	//stores background width
-	SDL_QueryTexture(App->textures->textures[1], nullptr, nullptr, bgWidth, nullptr);
+	SDL_QueryTexture(App->textures->textures[1], nullptr, nullptr, &p.bgWidth, nullptr);
 	
 	//dynamic memory
-	bgSpeed = new int;
-	bgLastPosX = new int;
-	mgSpeed = new int;
-	mgLastPosX = new int;
-	fgSpeed = new int;
-	fgLastPosX = new int;
+	/*p.bgSpeed = new int;
+	p.bgLastPosX = new int;
+	p.mgSpeed = new int;
+	p.mgLastPosX = new int;
+	p.fgSpeed = new int;
+	p.fgLastPosX = new int;*/
 	//defines
-	*fgLastPosX = 0;
-	*mgLastPosX = 0;
+	p.bgLastPosX = 0;
+	p.fgLastPosX = 0;
+	p.mgLastPosX = 0;
 	
 	//defines scroll speeds
-	*bgSpeed = 1;
-	*mgSpeed = 2;
-	*fgSpeed = 3;
+	p.bgSpeed = 1;
+	p.mgSpeed = 2;
+	p.fgSpeed = 3;
 	
 	//defines destination Rect - testing
 	dsrect = new SDL_Rect;
@@ -72,28 +75,29 @@ bool ModuleParallax::Init()
 
 update_status ModuleParallax::Update()
 {
-	dsrect->x = *bgLastPosX;
-	dsrect->x -= *bgSpeed;
+
+	dsrect->x = p.bgLastPosX;
+	dsrect->x -= p.bgSpeed;
 	if (dsrect->x <= (-512)) dsrect->x = 0; //loop //512 = offset until texture repeats
-	//textures[1] = homework | textures[0] is TODO10
+	//textures[1,2,3] = homework | textures[0] is TODO10
 	//Draw tile1 BG1
 	App->render->Blit(App->textures->textures[1],dsrect->x, dsrect->y, nullptr);
 	//stores last posX
-	*bgLastPosX = dsrect->x;
+	p.bgLastPosX = dsrect->x;
 	//draw second tile BG2
-	App->render->Blit(App->textures->textures[1], dsrect->x + (*bgWidth - *offset), dsrect->y, nullptr);
+	App->render->Blit(App->textures->textures[1], dsrect->x + (p.bgWidth - p.offset), dsrect->y, nullptr);
 	
 	//mg
-	dsrect->x = *mgLastPosX;
-	dsrect->x -= *mgSpeed;
+	dsrect->x = p.mgLastPosX;
+	dsrect->x -= p.mgSpeed;
 	App->render->Blit(App->textures->textures[2], dsrect->x, 30, nullptr);
-	*mgLastPosX = dsrect->x;
+	p.mgLastPosX = dsrect->x;
 	
 	//foreground
-	dsrect->x = *fgLastPosX;
-	dsrect->x -= *fgSpeed;
+	dsrect->x = p.fgLastPosX;
+	dsrect->x -= p.fgSpeed;
 	App->render->Blit(App->textures->textures[3], dsrect->x , 0, nullptr);
-	*fgLastPosX = dsrect->x;
+	p.fgLastPosX = dsrect->x;
 
 	return update_status::UPDATE_CONTINUE;
 }

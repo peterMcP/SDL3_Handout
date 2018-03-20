@@ -10,14 +10,17 @@ class ModuleParallax : public Module
 {
 public:
 
-	int* bgSpeed = nullptr;
-	int* bgLastPosX = nullptr;
-	int* bgWidth = nullptr;
-	int* mgSpeed = nullptr;
-	int* mgLastPosX = nullptr;
-	int* fgSpeed = nullptr;
-	int* fgLastPosX = nullptr;
-	int* offset = nullptr;
+	struct parallaxValues
+	{
+		int bgSpeed;// = nullptr;
+		int bgLastPosX;// = nullptr;
+		int bgWidth;// = nullptr;
+		int mgSpeed;// = nullptr;
+		int mgLastPosX;// = nullptr;
+		int fgSpeed;// = nullptr;
+		int fgLastPosX;// = nullptr;
+		int offset;// = nullptr;
+	}p;
 
 	//struct parallaxValues;
 
@@ -29,7 +32,9 @@ public:
 
 public:
 	SDL_Rect* dsrect = nullptr;
+
 };
 
+//extern parallaxValues* p;
 #endif // !__ModuleParallax_H__
 
