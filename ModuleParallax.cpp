@@ -102,3 +102,10 @@ update_status ModuleParallax::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
+bool ModuleParallax::CleanUp()
+{
+	//delete &p;
+	//destro
+	return true;
+}
+

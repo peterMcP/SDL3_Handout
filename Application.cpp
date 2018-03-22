@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 
 #include "ModuleParallax.h"
+#include "ModuleAudio.h"
 
 Application::Application()
 {
@@ -13,6 +14,8 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = parallax = new ModuleParallax();
+	modules[5] = audio = new ModuleAudio();
+
 
 }	
 

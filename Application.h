@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 5
+#define NUM_MODULES 6
 
 class ModuleWindow;
 class ModuleInput;
@@ -11,7 +11,8 @@ class ModuleTextures;
 class ModuleRender;
 class Module;
 
-class ModuleParallax; //homework
+class ModuleParallax; //"extra" homework
+class ModuleAudio; //homework
 
 class Application
 {
@@ -24,6 +25,7 @@ public:
 	ModuleTextures* textures = nullptr;
 
 	ModuleParallax* parallax = nullptr;
+	ModuleAudio* audio = nullptr;
 
 public:
 
